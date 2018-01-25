@@ -1,4 +1,5 @@
 const koa = require("koa");
+const route = require('koa-route');
 const wechat = require('./g.js');
 const path  = require("path");
 const util  = require("./libs/util.js");
@@ -27,11 +28,13 @@ let config  =
 
 app.use(wechat(config.wechat));
 
-app.use('/admin',()=>{
-	this.type = 'html';
-	this.body = "Hello World";
-
+let admin = route.get('/admin',(ctx)=>
+{
+	ctx.type = 'html';
+	ctx.body = 'Hello World';
 });
+
+app.use(admin);
 
 app.listen(80);
 console.log("Server is running at localhost:80;");
