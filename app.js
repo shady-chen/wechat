@@ -5,15 +5,19 @@ const util  = require("./libs/util.js");
 var wechat_file = path.join(__dirname,"./config/wechat.txt");
 let app = new koa();
 
-let config  = {
-	wechat:{
+let config  =
+{
+	wechat:
+	{
 		appId:"wxc56a06516c3043e3",
 		appSecret:"f21eb5d592eabc9c4c9668164bee746d",
 		token:"shady",
-		getAccessToken:function(){
+		getAccessToken:function()
+		{
 			return util.readFileAsync(wechat_file);
 		},
-		saveAccessToken:function(data){
+		saveAccessToken:function(data)
+		{
 			data = JSON.stringify(data);
 			return util.writeFileAsync(wechat_file,data);
 		}
