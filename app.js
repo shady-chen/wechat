@@ -27,7 +27,11 @@ let config  =
 
 app.use(wechat(config.wechat));
 
+app.use('/admin',()=>{
+	this.type = 'html';
+	this.body = "Hello World";
 
+});
 
 app.listen(80);
 console.log("Server is running at localhost:80;");
